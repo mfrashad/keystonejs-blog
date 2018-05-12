@@ -1,0 +1,44 @@
+ <section class="s-content s-content--narrow s-content--no-padding-bottom">
+        {{#each galleries}}
+        <article class="row format-gallery">
+            
+            <div class="s-content__header col-full">
+                <h1 class="s-content__header-title">
+                    {{name}}
+                </h1>
+                <ul class="s-content__header-meta">
+                    <li class="date">{{date publishedDate}} </li>
+                </ul>
+            </div> <!-- end s-content__header -->
+    
+            <div class="s-content__media col-full">
+                <div class="s-content__slider slider">
+                    <div class="slider__slides">
+                        <div class="slider__slide">
+                            <img src="{{heroImage.url}}"
+                                 sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
+                        </div>
+                        {{#each images}}
+                        <div class="slider__slide">
+                            <img src="{{this.url}}" 
+                                 sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div> <!-- end s-content__media -->
+
+            <div class="col-full s-content__main">
+
+                <p class="lead">Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea nisi sint.</p>
+
+            </div> <!-- end s-content__main -->
+
+        </article>
+        <hr>
+        {{/each}}
+
+
+       
+
+    </section> <!-- s-content -->

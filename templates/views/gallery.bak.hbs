@@ -1,0 +1,32 @@
+<div class="container">
+	<h1>Gallery</h1>
+</div>
+<div class="container">
+	<!-- if galleries -->
+	{{#if galleries}}
+		{{#each galleries}}
+		<h2>{{name}}
+			<div class="pull-right text-muted">{{date publishedDate}} </div>
+		</h2>
+		<div class="row gallery-images">
+				{{#if heroImage}}
+				<div class="col-sm-4 col-md-4 gallery-image">
+					<img src="{{heroImage.url}}" class="img-rounded">
+				</div>
+				{{/if}}
+				<div class="col-sm-8 col-md-8">
+					<div class="row">
+						{{#each images}}
+						<div class="col-xs-4 col-sm-4 col-md-3 gallery-image">
+							<img src="{{this.url}}" alt="error" class="img-rounded">
+						</div>
+						{{/each}}
+					</div>
+				</div>
+		</div>
+		{{/each}}
+	{{else}}
+	<!-- else -->
+	<h3 class="text-muted">There are no image galleries yet.</h3>
+	{{/if}}
+</div>

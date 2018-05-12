@@ -1,0 +1,178 @@
+<section class="s-content s-content--narrow s-content--no-padding-bottom">
+
+        <article class="row format-standard">
+
+            <div class="s-content__header col-full">
+                <h1 class="s-content__header-title">
+                    {{data.post.title}}
+                </h1>
+                <ul class="s-content__header-meta">
+                    <li class="date">December 16, 2017</li>
+                    <li class="cat">
+                        In 
+                        {{{categoryList data.post.categories}}}
+                    </li>
+                </ul>
+            </div> <!-- end s-content__header -->
+    
+            <div class="s-content__media col-full">
+                <div class="s-content__post-thumb">
+                    <img src="{{data.post.image.url}} " alt="" >
+                </div>
+            </div> <!-- end s-content__media -->
+
+            <div class="col-full s-content__main">
+
+                {{{data.post.content.extended}}}
+                <p class="s-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="s-content__tag-list">
+                        {{{categoryList data.post.categories separator=""}}}
+                    </span>
+                </p> <!-- end s-content__tags -->
+
+                {{#if author.name.first}}by {{author.name.first}}{{/if}}
+                <!--div class="s-content__author">
+                    <img src="/images/avatars/user-03.jpg" alt="">
+
+                    <div class="s-content__author-about">
+                        <h4 class="s-content__author-name">
+                            <a href="#0">{{#if author.name.first}}by {{author.name.first}}{{/if}}</a>
+                        </h4>
+                    
+                        <p>Alias aperiam at debitis deserunt dignissimos dolorem doloribus, fuga fugiat impedit laudantium magni maxime nihil nisi quidem quisquam sed ullam voluptas voluptatum. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        </p>
+
+                        <ul class="s-content__author-social">
+                           <li><a href="#0">Facebook</a></li>
+                           <li><a href="#0">Twitter</a></li>
+                           <li><a href="#0">GooglePlus</a></li>
+                           <li><a href="#0">Instagram</a></li>
+                        </ul>
+                    </div>
+                </div-->
+
+                <div class="s-content__pagenav">
+                    <div class="s-content__nav">
+                        {{#if data.prevPost}}
+                        <div class="s-content__prev">
+                            <a href="/blog/post/{{data.prevPost.slug}}" rel="prev">
+                                <span>Previous Post</span>
+                                {{data.prevPost.title}}
+                            </a>
+                        </div>
+                        {{/if}}
+                        {{#if data.nextPost}}
+                        <div class="s-content__next">
+                            <a href="/blog/post/{{data.nextPost.slug}}" rel="next">
+                                <span>Next Post</span>
+                                {{data.nextPost.title}} 
+                            </a>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div> <!-- end s-content__pagenav -->
+
+            </div> <!-- end s-content__main -->
+
+        </article>
+
+
+        <!-- comments
+        ================================================== -->
+        <div class="comments-wrap">
+
+            <div id="comments" class="row">
+                <div class="col-full">
+
+                    <h3 class="h2">Comments</h3>
+
+                    <!-- commentlist -->
+                    <ol class="commentlist">
+
+                        
+                        {{#each data.comments}}
+                        
+                        <li id="comment-id-{{id}}" class="depth-1 comment">
+
+                            <div class="comment__avatar">
+                                <img width="50" height="50" class="avatar" src="{{author.image}}" onerror="this.onerror=null;this.src='/images/avatars/user-01.jpg';" alt="no-image">
+                            </div>
+
+                            <div class="comment__content">
+
+                                <div class="comment__info">
+                                    <cite>{{author.name.full}} </cite>
+
+                                    <div class="comment__meta">
+                                        <time class="comment__time">{{date publishedOn}} </time>
+                                    </div>
+                                </div>
+
+                                <div class="comment__text">
+                                <p>{{content}} </p>
+                                </div>
+
+                            </div>
+
+                        </li> <!-- end comment level 1 -->
+                        <hr>
+                        {{/each}}
+                           
+                        <li class="depth-1 comment">
+                            <form method="post">
+                            <input type="hidden" name="action" value="createComment"> 
+                            <div class="comment__avatar">
+                                <img width="50" height="50" class="avatar" src="{{user.image}}" onerror="this.onerror=null;this.src='/images/avatars/user-01.jpg';" alt="no image">
+                            </div>
+                            <div class="comment__content">
+                                {{#if user}}
+                                <div class="comment__info">
+                                    <cite>{{user.name.full}} </cite>
+                                </div>
+                                <div class="comment__text">
+                                <textarea name="content" value="{{formData.content}}" class="full-width" placeholder="Write your message here!"></textarea>
+                                </div>
+                                <button type="submit" class="submit btn--primary btn--large">Submit</button>
+                                {{else}}
+                                <div class="comment__info">
+                                    <cite>Please Sign in to Comment </cite>
+                                </div>
+                                <div class="comment__text">
+                                <textarea name="content" value="{{formData.content}}" class="full-width" placeholder="Please sign in to comment!" disabled></textarea>
+                                </div>
+                                <a href="/google"><button type="button" class="submit btn--primary btn--large">Sign In</button></a>
+                                {{/if}}
+                            </div>
+                            </form>
+
+                        </li>  <!-- end comment level 1 -->
+                        
+
+                    </ol> <!-- end commentlist -->
+
+
+                    <!-- respond
+                    ================================================== -->
+                    
+
+                    <!--div class="respond">
+
+                        <h3 class="h2">Add Comment</h3>
+                        <p>{{test}}</p>
+
+                        <form method="post">
+                            <input type="hidden" name="action" value="createComment">
+                            <textarea name="content" value="{{formData.content}} "></textarea>
+                            <button type="submit" class="submit btn--primary btn--large full-width">Submit</button>
+                        </form> 
+
+                    </div> <!-- end respond -->
+
+                </div> <!-- end col-full -->
+
+            </div> <!-- end row comments -->
+        </div> <!-- end comments-wrap -->
+
+    </section> <!-- s-content -->
